@@ -1,0 +1,168 @@
+﻿/*** Global reset ***/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700');
+
+*,
+*::before,
+*::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+/**** Global Style   ****/
+main.container {
+    background-color: white;
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+
+
+
+/***** Index Page *****/
+.cta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+    height: 120vh;
+    padding-left: 8.5%;
+    background-color: #F3F4F7;
+    border-radius: 40px 0px 0 100px / 10% 0 0 30%;
+    background: transparent;
+    z-index: 1;
+    overflow: auto;
+
+    margin-bottom: 200px;
+}
+
+    .cta::after {
+        content: "";
+        z-index: -1;
+        /*border: 1px solid black;*/
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: url('../images/brooke-lark-230140-unsplash.jpg') no-repeat bottom right;
+        background-size: cover;
+        /*background-position: -400px -400px;*/
+        transform: rotateY(180deg);
+    }
+
+.cta__contents {
+    min-height: 40%;
+    height: 50%;
+    max-height: 60%;
+    width: 60%;
+    position: relative;
+    /*display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;*/
+}
+
+.cta__contents .small-title {
+    letter-spacing: 5.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #8F91A8;
+    font-size: 25px;
+    position: relative;
+    top: 20px;
+    left: 4px;
+}
+
+.cta__contents .main-title {
+    font-size: 80px;
+    font-weight: 700;
+    display: inline-block;
+    padding: 0;
+    text-align: start;
+}
+
+.color-redish {
+    color: #DB2F2F;
+}
+
+.cta__contents .main-title-highlight {
+    /*color: #DB2F2F;*/
+}
+
+.color-greyish {
+    color: #8F91A8;
+}
+
+.cta__contents .header-description {
+    font-size: 17px;
+    font-weight: 500;
+    word-spacing: -2px;
+}
+
+.cta__contents__description {
+    width: 70%;
+    margin-top: 15px;
+}
+
+.cta__contents__btn-container {
+    width: 50%;
+    position: absolute;
+    bottom: 10px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cta__contents__btn-container form {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.btn-search {
+    width: 5%;
+    position: absolute;
+    top: 2px;
+    bottom: 0;
+    left: 10px;
+    border: none;
+    background: transparent;
+
+}
+
+#searchBox {
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    -moz-border-radius: 34px;
+    -webkit-border-radius: 34px;
+    border-radius: 34px;
+    text-align: center;
+}
+
+#btn-seeAll {
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    height: 45px;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+    background-color: #DB2F2F;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    -moz-box-shadow: 0 0 5px 10px #DB2F2F;
+    -webkit-box-shadow: 0 0 5px 10px #DB2F2F;
+    box-shadow: 0px 5px 20px 6px hsla(0, 84%, 48%, 0.35);
+}
+
