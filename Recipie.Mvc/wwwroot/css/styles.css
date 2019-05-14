@@ -37,7 +37,8 @@ main.container {
     background: transparent;
     z-index: 1;
     overflow: auto;
-
+    background: linear-gradient(to right, rgba(227,235,238, 1), rgba(227,235,238, 0.3));
+    /*rgba(227,235,238, 1);*/
     margin-bottom: 200px;
 }
 
@@ -57,17 +58,9 @@ main.container {
     }
 
 .cta__contents {
-    min-height: 40%;
-    height: 50%;
-    max-height: 60%;
+    height: 400px;
     width: 60%;
     position: relative;
-    /*display: flex;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;*/
 }
 
 .cta__contents .small-title {
@@ -81,12 +74,15 @@ main.container {
     left: 4px;
 }
 
+.title {
+    font-weight: 700;
+    text-align: start;
+}
+
 .cta__contents .main-title {
     font-size: 80px;
-    font-weight: 700;
     display: inline-block;
     padding: 0;
-    text-align: start;
 }
 
 .color-redish {
@@ -101,7 +97,7 @@ main.container {
     color: #8F91A8;
 }
 
-.cta__contents .header-description {
+.header-description {
     font-size: 17px;
     font-weight: 500;
     word-spacing: -2px;
@@ -166,3 +162,283 @@ main.container {
     box-shadow: 0px 5px 20px 6px hsla(0, 84%, 48%, 0.35);
 }
 
+
+
+section.featured-recipes {
+    margin-bottom: 200px;
+}
+
+.featured-recipes > header {
+    text-align: center;
+    width: 50%;
+    margin: 150px auto;
+}
+
+
+.featured-recipes .title {
+    font-size: 40px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.recipe-items {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.recipe-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 47%;
+}
+
+    .recipe-link:active,
+    .recipe-link:visited
+    {
+        color: inherit;
+        border: none;
+        outline: none;
+    }
+
+
+
+.recipe-item {
+    display: flex;
+    align-items: center;
+    height: 250px;
+    width: 45%;
+    border: 1px solid rgba(183, 183, 183, 0.68);
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 20px;
+}
+
+    .recipe-item:hover {
+        cursor: pointer;
+    }
+
+
+    .recipe-item .recipe-item__img-container {
+        flex: 1 1 30%;
+        height: 75%;
+        border-radius: 50%;
+        overflow: hidden;
+        /*align-self: center;*/
+        margin-right: 30px;
+    }
+
+    .recipe-item .recipe-item__img-container img {
+        height: 100%;
+        width: 100%;
+    }
+
+.recipe-item__main {
+    height: 75%;
+    flex: 1 1 55%;
+    position: relative;
+}
+    .recipe-item__main header {
+        /*display: inline-block;*/
+        font-weight: 700;
+        font-size: 20px;
+        font-size: calc(0.5vw + 0.8vh + 1.2vmin);
+        margin-bottom: 5px;
+    }
+
+    .recipe-item__main .recipe-item__description {
+        font-size: 13px;
+        margin-bottom: 5px;
+        word-spacing: -3px;
+        letter-spacing: -0.4px;
+        font-weight: 300;
+    }
+
+.recipe-item__info {
+    /*margin-top: 20px;*/
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    position: absolute;
+    bottom: 0;
+    left: -18px;
+}
+
+.recipe-item__info__headers {
+    font-size: 14px;
+    /*font-size: calc(0.7vw + 0.4vh + 0.3vmin);*/
+    font-weight: 400;
+}
+
+    .recipe-item__info__headers tr {
+        padding: 5px 10px;
+    }
+
+    .recipe-item__info__headers th {
+        padding-bottom: 20px;
+    }
+
+    .recipe-item__info tbody {
+        font-size: 13px;
+        letter-spacing: -1.2px;
+    }
+
+.recipe-item__info tr > *:nth-child(2) {
+    border-left: solid rgba(143, 145, 168, 0.23) thin;
+    border-right: solid rgba(143, 145, 168, 0.23) thin;
+}
+
+
+
+/***** Modal Styles *******/
+
+#modal-container {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(178, 173, 173, 0.68);
+    justify-content: center;
+    align-items: center;
+}
+
+    #modal-container.modal-active {
+        display: flex;
+    }
+
+    .modal-open {
+        overflow: hidden;
+        position: absolute;
+    }
+
+#modal {
+    position: relative;
+    background: linear-gradient(to right, rgba(227,235,238, 1), rgba(200,215,228, 0.6));
+    width: 1000px;
+    height: 500px;
+    /*width: 75%;
+    height: 75%;*/
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    /*border: 1px solid black;*/
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2), 0 7px 20px rgba(0,0,0,0.2);
+    display: flex;
+}
+
+
+#modal-close {
+    position: absolute;
+    right: 2%;
+    top: 4%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: rgb(220, 78, 65);
+    border-radius: 25%;
+    font-size: 30px;
+    cursor: pointer;
+    color: #0f0e0e;
+    line-height: 1px;
+    vertical-align: baseline;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2), 0 3px 10px rgba(0,0,0,0.2);
+}
+
+    #modal-close:hover,
+    #modal-close:focus {
+        color: rgb(206, 201, 201);
+        background-color: hsl(0, 54%, 63%);
+        outline: 0;
+    }
+
+    #modal-close:active {
+        transform: translateY(2px);
+    }
+
+#modal-content {
+    width: 60%;
+    height: 100%;
+    padding: 20px 5px 5px 30px;
+}
+
+#modal-img {
+    width: 40%;
+}
+
+#modal-img img {
+    width: 100%;
+    height: 100%;
+}
+
+#modal-content .modal-title,
+.ingredients-container {
+    margin: 10px auto;
+}
+
+.modal-title-description {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(110, 104, 104);
+}
+
+.modal-ingredients {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-align-content: flex-start;
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
+    margin-top: 20px;
+    color: rgb(110, 104, 104);
+    height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+#modal li {
+    list-style-position: inside;
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+#modal .modal-ingredient {
+    width: 50%;
+}
+
+.directions-container {
+    position: relative;
+    height: calc(70% - 100px);
+    padding: 0 5px;
+}
+
+.modal-directions {
+    margin-top: 20px;
+    color: rgb(110, 104, 104);
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 150px;
+    height: 70%;
+    position: absolute;
+    bottom: 0;
+    top: 15px;
+}
+
+#modal .modal-direction {
+    margin: 5px 0;
+    letter-spacing: -0.5px;
+    word-spacing: -2px;
+}

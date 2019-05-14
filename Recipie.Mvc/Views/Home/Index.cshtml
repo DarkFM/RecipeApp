@@ -2,7 +2,7 @@
     <div class="cta__contents">
         <header>
             <h4 class="small-title">DELICIOUS</h4>
-            <h1 class="main-title">Food <span class="main-title-highlight color-redish">Recipes</span></h1>
+            <h1 class="main-title title">Food <span class="main-title-highlight color-redish">Recipes</span></h1>
         </header>
         <div class="cta__contents__description">
             <h6 class="header-description color-greyish">Your source of the best recipes using the best ingredients from all over the world.</h6>
@@ -23,34 +23,44 @@
 
 <section class="featured-recipes">
     <header>
-        <h2>Featured Recipes</h2>
-        <h6 class="header-description">Delicious and easy recipes we chose for you</h6>
+        <h2 class="title">Featured Recipes</h2>
+        <h6 class="header-description color-greyish">Delicious and easy recipes we chose for you</h6>
     </header>
     <div class="recipe-items">
-        <div class="recipe-item">
+    </div>
+</section>
+
+<template id="recipe-item-template">
+    @*<a class="recipe-link" href="#" target="_blank">*@
+        <div class="recipe-item" data-id="">
             <div class="recipe-item__img-container">
-                <img src="#" alt="Recipe Image" />
+                <img decoding="sync" src="~/images/eiliv-sonas-aceron-1113078-unsplash.jpg" alt="Recipe Image" />
             </div>
-            <div class="recipe-item__description">
-                <header class="recipe-item__title">Recipe Title</header>
-                <h6 class="recipe-item__description">Lorem ipsum, this is the title description</h6>
+            <div class="recipe-item__main">
+                <header class="recipe-item__title">Chicken-Corn Cowder</header>
+                <h6 class="recipe-item__description color-greyish">Lorem ipsum, this is the title description</h6>
                 <table class="recipe-item__info">
-                    <thead class="recipe-item__info__headers">
+                    <thead class="recipe-item__info__headers color-greyish">
                         <tr>
-                            <th>Prep Time</th>
-                            <th>Serves</th>
-                            <th>Skill</th>
+                            <th scope="col">Prep Time</th>
+                            <th scope="col">Serves</th>
+                            <th scope="col">Skill</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1h</td>
-                            <td>4</td>
-                            <td>Easy</td>
+                            <td class="prepTime">1h</td>
+                            <td class="totalServe">4</td>
+                            <td class="difficulty">Easy</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
-</section>
+    @*</a>*@
+</template>
+
+@section Scripts {
+    <script type="module" src="~/js/recipeService.js"></script>
+    <script type="module" src="~/js/index.js"></script>
+}

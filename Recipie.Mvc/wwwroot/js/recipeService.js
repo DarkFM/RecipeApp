@@ -4,9 +4,10 @@ let apiEndpoint = `https://www.themealdb.com/api/json/v1/${apiKey}/`;
 
 export default class RecipeService {
 
+    // returns the array of meals wrapped in a resolved promise
     getMeals(url) {
         if (!url.trim()) {
-            throw new Error('Cannot have empty search query');
+            throw new Error('Cannot fetch from empty url string');
         }
 
         const request = new Request(url, {
@@ -55,14 +56,20 @@ export default class RecipeService {
         return meal;
     }
 
-    getRandomMeals() {
-        let meals;
-
+    // Returns an array of the meals
+    getRandomMeals(numberOfMeals = 1) {
+        let promises = [];
         const endpoint = apiEndpoint + 'random.php';
-        // Get the meals from the API
-        this.getMeals(endpoint)
-            .then(result => meals = result);
 
-        return meals;
+        // Get the meals from the API
+        for (var i = 0; i < numberOfMeals; i++) {
+            promises.push(this.getMeals(endpoint));
+        }
+
+        return Promise.all(promises)
+            // Gets the results of each AJAX request and extracts each meal object to a new array
+            // results is an array of 1 element arrays
+            .then(results => results.map(mealsArray => mealsArray[0])) // extract the first element from each nested array
+            .catch(reason => console.error(reason));
     }
 }

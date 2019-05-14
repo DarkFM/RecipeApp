@@ -9,7 +9,42 @@
 <body>
     <main class="container">
         @RenderBody()
+
+        <aside id="modal-container"></aside> 
     </main>
+
+    <template id="modal-template">
+       @*<aside id="modal-container">*@
+            <div id="modal">
+                <div id="modal-content">
+                    <header>
+                        <h1 class="modal-title">Title</h1>
+                        <h4 class="modal-title-description">This makes around <span class="modal-servings-size">4</span> servings, and it takes around <span class="modal-completion-time">4hrs</span> to complete</h4>
+                    </header>
+                    <div class="ingredients-container">
+                        <h3>Ingredients</h3>
+                        <ul class="modal-ingredients">
+                            <li class="modal-ingredient">2 tbl spoons salt</li>
+                            <li class="modal-ingredient">2 tbl spoons salt</li>
+                            <li class="modal-ingredient">2 tbl spoons salt</li>
+                            <li class="modal-ingredient">2 tbl spoons salt</li>
+
+                        </ul>
+                    </div>
+                    <div class="directions-container">
+                        <h3>Directions</h3>
+                        <ol class="modal-directions">
+                            <li class="modal-direction">Add Salt</li>
+                        </ol>
+                    </div>
+                </div>
+                <div id="modal-img">
+                    <img src="~/images/brooke-lark-230140-unsplash.jpg"/>
+                </div>
+                <button type="button" id="modal-close">&times;</button>
+            </div>
+        @*</aside>*@
+    </template>
     <footer>
         <div class="footer-spacing"></div>
         <div class="footer-main">
@@ -18,5 +53,7 @@
             <p>(123) 456 7890</p>
         </div>
     </footer>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
