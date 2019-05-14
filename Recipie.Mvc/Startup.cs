@@ -31,7 +31,13 @@ namespace Recipe.Mvc
             }
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{action=index}",
+                    defaults: new { controller = "Home" });
+            });
         }
     }
 }

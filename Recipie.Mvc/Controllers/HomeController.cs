@@ -13,6 +13,7 @@ namespace Recipe.Mvc.Controllers
     {
         private readonly RecipeService _recipeService;
 
+        // didnt use this
         public HomeController(RecipeService recipeService)
         {
             _recipeService = recipeService;
@@ -20,11 +21,7 @@ namespace Recipe.Mvc.Controllers
 
         public IActionResult Index() => View();
 
-        //[Produces("application/json")]
         public IActionResult Search() => View();
-            //var resultObj = await _recipeService.GetRecipesByName(query);
-            //JsonResult json = Json(resultObj);
-
     }
 
 }
