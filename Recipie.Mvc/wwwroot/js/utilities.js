@@ -29,7 +29,7 @@ export function createMealNode(meal) {
     recipeItemSelect('.recipe-item').dataset.id = meal.id;
     recipeItemSelect('.recipe-item__img-container img').src = meal.thumbnail;
     recipeItemSelect('.recipe-item__title').innerText = meal.name;
-    recipeItemSelect('.recipe-item__description').innerText = `This ${meal.category} dish orginates from ${meal.origin}`;
+    recipeItemSelect('.recipe-item__description').innerText = `This ${meal.origin} dish falls under the ${meal.category} category`;
     recipeItemSelect('.prepTime').innerText = meal.preperationTime;
     recipeItemSelect('.totalServe').innerText = meal.totalServing;
     recipeItemSelect('.difficulty').innerText = meal.difficulty;
