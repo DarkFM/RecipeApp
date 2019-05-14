@@ -22,27 +22,20 @@ export default class RecipeService {
                 return response.json();
             })
             .then(data => {
-                if (!data) {
-                    throw new Error('Invalid data returned');
-                    //throw new Error('No meal fround for the specified query');
+                if (!data || !data['meals']) {
+                    //throw new Error('Invalid data returned');
+                    throw new Error('No meal fround for the specified query');
                 }
                 return data['meals']; // return all found meals
-            })
-            .catch(error => {
-                console.error(error);
             });
     }
 
     // returns an array of the found meals
     findRecipesByName(name) {
-        let meals;
-
         const endpoint = apiEndpoint + 'search.php?s=' + name;
         // Get the meals from the API
-        this.getMeals(endpoint)
-            .then(result => meals = result);
-
-        return meals;
+        return this.getMeals(endpoint)
+            .then(result => result);
     }
 
     findRecipeById(id) {

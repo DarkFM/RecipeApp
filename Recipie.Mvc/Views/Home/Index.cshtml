@@ -7,7 +7,7 @@
         <div class="cta__contents__description">
             <h6 class="header-description color-greyish">Your source of the best recipes using the best ingredients from all over the world.</h6>
         </div>
-        <div class="cta__contents__btn-container">
+        <div class="search-btn-container">
             <form asp-controller="Home" asp-action="Search" method="get">
                 <button class="btn-search" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -16,12 +16,12 @@
                 </button>
                 <input id="searchBox" type="search" name="query" placeholder="Find more recipes..." />
             </form>
-            <button id="btn-seeAll">See All Recipes</button>
+            <a id="btn-seeAll" href="#featured-recipes">See All Recipes</a>
         </div>
     </div>
 </section>
 
-<section class="featured-recipes">
+<section id="featured-recipes" class="recipes-section">
     <header>
         <h2 class="title">Featured Recipes</h2>
         <h6 class="header-description color-greyish">Delicious and easy recipes we chose for you</h6>
@@ -31,7 +31,6 @@
 </section>
 
 <template id="recipe-item-template">
-    @*<a class="recipe-link" href="#" target="_blank">*@
         <div class="recipe-item" data-id="">
             <div class="recipe-item__img-container">
                 <img decoding="sync" src="~/images/eiliv-sonas-aceron-1113078-unsplash.jpg" alt="Recipe Image" />
@@ -57,7 +56,6 @@
                 </table>
             </div>
         </div>
-    @*</a>*@
 </template>
 
 @section Scripts {

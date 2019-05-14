@@ -11,13 +11,16 @@
     margin: 0;
 }
 
+body {
+    font-family: 'Roboto Mono', monospace;
+}
 
 /**** Global Style   ****/
 main.container {
     background-color: white;
-    font-family: 'Roboto Mono', monospace;
     margin-left: 100px;
     margin-top: 50px;
+    min-height: calc(100vh - 50px);
 }
 
 
@@ -108,7 +111,7 @@ main.container {
     margin-top: 15px;
 }
 
-.cta__contents__btn-container {
+.search-btn-container {
     width: 50%;
     position: absolute;
     bottom: 10px;
@@ -118,7 +121,7 @@ main.container {
     justify-content: space-between;
 }
 
-.cta__contents__btn-container form {
+.search-btn-container form {
     position: relative;
     width: 100%;
     height: 50px;
@@ -146,6 +149,7 @@ main.container {
 }
 
 #btn-seeAll {
+    text-decoration: none;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
@@ -157,25 +161,28 @@ main.container {
     color: white;
     font-weight: 500;
     font-size: 16px;
+    line-height: 42px;
     -moz-box-shadow: 0 0 5px 10px #DB2F2F;
     -webkit-box-shadow: 0 0 5px 10px #DB2F2F;
     box-shadow: 0px 5px 20px 6px hsla(0, 84%, 48%, 0.35);
+    vertical-align: baseline;
+    text-align: center;
 }
 
 
 
-section.featured-recipes {
+section.recipes-section {
     margin-bottom: 200px;
 }
 
-.featured-recipes > header {
+.recipes-section > header {
     text-align: center;
     width: 50%;
     margin: 150px auto;
 }
 
 
-.featured-recipes .title {
+.recipes-section .title {
     font-size: 40px;
     display: inline-block;
     margin-bottom: 15px;
@@ -335,6 +342,7 @@ section.featured-recipes {
     /*border: 1px solid black;*/
     box-shadow: 0 5px 8px rgba(0,0,0,0.2), 0 7px 20px rgba(0,0,0,0.2);
     display: flex;
+    overflow: hidden;
 }
 
 
@@ -441,4 +449,66 @@ section.featured-recipes {
     margin: 5px 0;
     letter-spacing: -0.5px;
     word-spacing: -2px;
+}
+
+
+
+/**** Footer ****/
+footer {
+    margin-top: 50px;
+    /*height: calc(100vh - 90vh);*/
+    /*height: 50px;*/
+    background-color: #3d3d3d;
+    color: white;
+    font-size: 13px;
+    padding: 10px 0;
+    position: relative;
+}
+
+
+    footer .info-wrapper {
+        height: 100%;
+        /*min-height: 100px;*/
+        margin: 5px auto;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        /*justify-content: space-between;*/
+        width: 50%;
+        /*margin: auto;*/
+    }
+
+.info-wrapper > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+    footer > p {
+        margin-left: 20px;
+    }
+
+
+/*********** Search.html ********/
+.search-bar__search-btn-container {
+    position: relative;
+    width: 50%;
+    margin: auto;
+    height: 60px;
+}
+
+.search-bar__search-btn-container form {
+    height: 100%;
+    position: relative;
+}
+
+.search-bar__btn-search {
+    position: absolute;
+    width: 5%;
+    position: absolute;
+    top: 2px;
+    bottom: 0;
+    left: 10px;
+    border: none;
+    background: transparent;
 }

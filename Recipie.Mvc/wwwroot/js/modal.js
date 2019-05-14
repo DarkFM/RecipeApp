@@ -1,9 +1,10 @@
-﻿export default class Modal {
+﻿let windowEventListenerAdded = false;
+
+export default class Modal {
     constructor(config) {
         this.modalElement = config.DOMNode; // HtmlElement/Node
         this.parentElement = config.parentElement;
         this.options = config.options; // Array [{}]
-        this.windowEventListenerAdded = false;
     }
 
     _DOMAccess(cssSelector) {
@@ -24,24 +25,23 @@
             this._DOMAccess(cssSelector)[nodeProperty] = value;
         });
 
-
+        this._DOMAccess('#modal-close').onclick = this.closeModal();
         // adding event listeners once
-        if (!this.windowEventListenerAdded) {
+        if (!windowEventListenerAdded) {
             // add onclick to modal close button
-            this._DOMAccess('#modal-close').onclick = this.closeModal();
             // allow for clicking background to close modal (only allows for left click)
             window.addEventListener('click', ev => {
                 if (ev.target.id === 'modal-container' && ev.which === 1) {
                     this.closeModal()();
                 }
             });
-            this.windowEventListenerAdded = true;
+            windowEventListenerAdded = true;
         }
         return this;
     }
 
     showModal() {
-        console.log(this.parentElement, 'parent element');
+        this.parentElement.innerHTML = '';
         this.parentElement.appendChild(this.modalElement);
         this.parentElement.classList.add('modal-active');
         document.querySelector('body').classList.add('modal-open');
