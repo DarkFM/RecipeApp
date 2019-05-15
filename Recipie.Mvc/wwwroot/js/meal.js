@@ -42,14 +42,17 @@
         const minCheck = /mins?(?:utes?)?/i;
         const secCheck = /secs?(?:onds?)?/i;
 
+        const oneDayDelta = 86400000;
+        const oneHourDelta = 3600000;
+        const oneMinuteDelta = 60000;
+        const oneSecondDelta = 1000;
+
         let matches = [];
 
         // DateTime used to sum up the total cooking time
         const time = new Date(this.startTime);
 
         while ((matches = re.exec(this.instructions)) !== null) {
-
-            //console.log(matches);
             // convert any fractions to decimal
             const normalizedNumber = matches[1].replace(/(\d)\/(\d)/ig, (match, numerator, denominator) => {
                 return (parseInt(numerator) / parseInt(denominator)).toFixed(2);
@@ -61,41 +64,26 @@
                 .reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0);
 
             const timeType = matches[2];
-            //console.log(new Date(this.startTime), 'base time');
-            //console.log('Normalized time is', normalizedTime);
 
             // keep adding the time to time object
             if (dayCheck.test(timeType)) {
-                // TODO: Convert normalizedTime to seconds and add seconds to the time
-                time.setHours(time.getHours() + 24 * normalizedTime);
-                //console.log("day called with time now at", time);
+                time.setTime(time.getTime() + oneDayDelta * normalizedTime);
             } else if (hrCheck.test(timeType)) {
-                time.setHours(time.getHours() + normalizedTime);
-                //console.log("hr called with time now at", time);
+                time.setTime(time.getTime() + oneHourDelta * normalizedTime);
             } else if (minCheck.test(timeType)) {
-                time.setMinutes(time.getMinutes() + normalizedTime);
-                //console.log("min called with time now at", time);
+                time.setTime(time.getTime() + oneMinuteDelta * normalizedTime);
             } else if (secCheck.test(timeType)) {
-                time.setSeconds(time.getSeconds() + normalizedTime);
-                //console.log("day called with time now at", time);
+                time.setTime(time.getTime() + oneSecondDelta * normalizedTime);
             }
         }
 
         const timeDelta = time.getTime() - this.startTime;
         const newTime = new Date(timeDelta);
 
-        //console.log(timeDelta, 'timedelta');
-        //console.log(newTime, 'newtime');
-
-        const oneDayDelta = 86400000;
-        const oneHourDelta = 3600000;
-        const oneMinuteDelta = 60000;
-
         if (timeDelta >= oneDayDelta) {
             return `${Math.trunc(timeDelta / oneDayDelta)} day(s)`;
         } else if (timeDelta > oneHourDelta) {
-            let baseStr = `${newTime.getUTCHours() % 12} hr(s)`;
-
+            let baseStr = `${newTime.getUTCHours()} hr(s)`;
             if (newTime.getMinutes() > 0)
                 baseStr += ` ${newTime.getUTCMinutes()} min(s)`;
 
@@ -112,14 +100,13 @@
     }
 
     get difficulty() {
-        let totalPoints = 0;
         const totalInstructions = this.instructionsArray.length;
         const totalIngredients = Object.keys(this.ingredientMeasureMap).length;
 
-
+        let totalPoints = 0;
         if (totalInstructions >= 20) {
             totalPoints += 5;
-        } else if (totalInstructions >= 10) {
+        } else if (totalInstructions >= 13) {
             totalPoints += 3;
         } else {
             totalPoints += 1;

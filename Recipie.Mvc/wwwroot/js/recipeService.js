@@ -11,7 +11,8 @@ export default class RecipeService {
         }
 
         const request = new Request(url, {
-            method: 'GET'
+            method: 'GET',
+            cache: "no-cache"
         });
 
         return fetch(request)
@@ -23,7 +24,6 @@ export default class RecipeService {
             })
             .then(data => {
                 if (!data || !data['meals']) {
-                    //throw new Error('Invalid data returned');
                     throw new Error('No meal fround for the specified query');
                 }
                 return data['meals']; // return all found meals
